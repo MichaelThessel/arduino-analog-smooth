@@ -28,7 +28,7 @@ void loop() {
   Serial.println(analog);
   
   // Smoothing with window size 10
-  float analogSmooth = as.analogReadSmooth(analogPin);
+  float analogSmooth = as.smooth(analog);
   Serial.print("Smooth (10): ");  
   Serial.println(analogSmooth);
 

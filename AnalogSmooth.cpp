@@ -38,20 +38,17 @@ void AnalogSmooth::_init(unsigned int windowSize)
 }
 
 /*
-  Perform smooting of analog input from given pin 
+  Perform smooting of analog input from given value 
 */
-float AnalogSmooth::analogReadSmooth(uint8_t pin)
+float AnalogSmooth::smooth(float value)
 {
-	// Read the pin
-	float current = analogRead(pin);
-
 	// Return if we only keep track of 1 value
 	if (this->_windowSize == 1) {
-		return current;
+		return value;
 	}
 
-	// Save the current value to the history array	
-	this->_analog[this->_analogPointer] = current;
+	// Save the value to the history array	
+	this->_analog[this->_analogPointer] = value;
 	
 	// Calculate the moving average
 	float total = 0;
@@ -73,4 +70,15 @@ float AnalogSmooth::analogReadSmooth(uint8_t pin)
 	  
 	// Retrun the average
 	return avg;
+}
+
+/*
+  Perform smooting of analog input from given pin 
+*/
+float AnalogSmooth::analogReadSmooth(uint8_t pin)
+{
+	// Read the pin
+	float current = analogRead(pin);
+	
+	return this->smooth(current);
 }

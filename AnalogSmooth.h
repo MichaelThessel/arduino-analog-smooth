@@ -15,6 +15,7 @@ class AnalogSmooth
 		AnalogSmooth(unsigned int windowSize);
 		AnalogSmooth();
 		float analogReadSmooth(uint8_t pin);
+		float smooth(float value);
 	private:
 		unsigned int _windowSize;
 		uint8_t _pin;
