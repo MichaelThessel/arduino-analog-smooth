@@ -1,4 +1,4 @@
-arduino
-=======
+Arduino Analog Smooth
+=====================
 
-Arduino Libraries
+Arduino library to smoothen jittery analog signals
